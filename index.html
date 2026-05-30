@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where does your brand sit in Africa's creator economy? · Stella Njogo Advisory</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0D0D0D;
+    --forest:    #361965;
+    --forest-lt: #ede8f5;
+    --forest-md: #261050;
+    --sand:      #FAF8F4;
+    --sand-dk:   #ede8f5;
+    --amber:     #B8922E;
+    --amber-lt:  #FAF3E2;
+    --slate:     #2A2A2A;
+    --mid:       #888;
+    --rule:      #E2DCEF;
+    --white:     #FFFFFF;
+    --coral:     #B8922E;
+    --violet:    #4a2485;
+    --gold:      #C9A84C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    padding: 20px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid var(--rule);
+    margin-bottom: 0;
+  }
+  .logo {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--forest);
+    letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--mid); font-weight: 300; }
+  .header-link {
+    font-size: 11px;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .header-link:hover { color: var(--forest); }
+
+  /* ── SCREENS ── */
+  .screen { display: none; padding: 40px 0 60px; }
+  .screen.active { display: block; animation: fadeUp 0.4s ease both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INTRO SCREEN ── */
+  .intro-kicker {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest);
+    background: var(--forest-lt);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .intro-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .intro-headline em {
+    font-style: italic;
+    color: var(--forest);
+  }
+  .intro-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--slate);
+    margin-bottom: 28px;
+    max-width: 540px;
+  }
+  .intro-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--mid);
+  }
+  .meta-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--forest);
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: var(--forest); transform: translateY(-1px); }
+  .btn-primary .arrow { transition: transform 0.2s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .intro-proof {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .proof-item { }
+  .proof-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .proof-label {
+    font-size: 11px;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  /* ── QUESTION SCREEN ── */
+  .progress-bar-wrap {
+    height: 2px;
+    background: var(--rule);
+    border-radius: 2px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--forest);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .q-counter {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 12px;
+  }
+  .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.18s, background 0.18s, transform 0.12s;
+    text-align: left;
+    font-family: 'Jost', sans-serif;
+    width: 100%;
+  }
+  .option:hover {
+    border-color: var(--forest);
+    background: var(--forest-lt);
+    transform: translateX(3px);
+  }
+  .option.selected {
+    border-color: var(--forest);
+    background: var(--forest-lt);
+  }
+  .option-letter {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--sand);
+    border: 1.5px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--slate);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+  }
+  .option.selected .option-letter,
+  .option:hover .option-letter {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+  .option-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--slate);
+  }
+  .option.selected .option-text { color: var(--ink); }
+
+  /* Email gate */
+  .email-gate {
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 28px 24px;
+    margin-top: 8px;
+  }
+  .gate-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+  .gate-text {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .text-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    background: var(--sand);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .text-input:focus { border-color: var(--forest); background: var(--white); }
+  .text-input::placeholder { color: var(--mid); }
+  .btn-submit {
+    padding: 12px 24px;
+    background: var(--forest);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.12s;
+    white-space: nowrap;
+  }
+  .btn-submit:hover { background: var(--forest-md); transform: translateY(-1px); }
+  .privacy-note {
+    font-size: 11px;
+    color: var(--mid);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* ── RESULTS SCREEN ── */
+  .result-header {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .result-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+  .result-type-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .result-tagline {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--forest);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .result-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--slate);
+    margin-bottom: 24px;
+  }
+
+  .result-card {
+    background: var(--white);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .result-card-header {
+    background: var(--ink);
+    padding: 12px 18px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .result-card-body { padding: 18px; }
+
+  .strength-list, .gap-list, .action-list { list-style: none; }
+  .strength-list li, .gap-list li, .action-list li {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--slate);
+    padding: 6px 0;
+    border-bottom: 0.5px solid var(--sand-dk);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .strength-list li:last-child,
+  .gap-list li:last-child,
+  .action-list li:last-child { border-bottom: none; }
+  .li-icon { flex-shrink: 0; margin-top: 2px; }
+
+  .trust-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-right: 8px;
+  }
+  .badge-institutional { background: var(--amber-lt); color: var(--amber); }
+  .badge-community     { background: var(--forest-lt); color: var(--forest); }
+  .badge-individual    { background: #F0EEF8; color: var(--violet); }
+
+  /* CTA block */
+  .result-cta {
+    background: var(--ink);
+    border-radius: 10px;
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-cta::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: var(--forest);
+    opacity: 0.12;
+  }
+  .cta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .cta-body {
+    font-size: 13px;
+    color: #AAA;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .cta-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--forest);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.12s;
+  }
+  .btn-cta-primary:hover { background: var(--forest-md); transform: translateY(-1px); }
+  .btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #AAA;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 11px 20px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-cta-secondary:hover { border-color: #666; color: var(--white); }
+
+  .share-strip {
+    text-align: center;
+    padding: 16px;
+    font-size: 12px;
+    color: var(--mid);
+  }
+  .share-strip strong { color: var(--slate); }
+
+  .retake-btn {
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 8px;
+  }
+  .retake-btn:hover { color: var(--forest); }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 0.5px solid var(--rule);
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--mid);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .site-footer a { color: var(--forest); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .intro-proof { grid-template-columns: 1fr 1fr; }
+    .input-row { flex-direction: column; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="site-header">
+    <div class="logo">Stella Njogo Advisory <span>· Creator Economy Intelligence</span></div>
+    <a href="https://stellanjogo.com" class="header-link">stellanjogo.com ↗</a>
+  </header>
+
+  <!-- ══ INTRO SCREEN ══════════════════════════════════════════════════════ -->
+  <div class="screen active" id="screen-intro">
+    <span class="intro-kicker">5-question diagnostic · 2 minutes</span>
+    <h1 class="intro-headline">Where does your brand<br>sit in Africa's<br><em>creator economy?</em></h1>
+    <p class="intro-body">
+      Most organisations don't have a creator economy problem. They have a trust problem — and they're trying to solve it with reach. This 5-question diagnostic tells you exactly where your brand sits, which trust type drives your market, and what you need to do differently to build real influence in African markets.
+    </p>
+    <div class="intro-meta">
+      <div class="meta-item"><div class="meta-dot"></div>5 questions</div>
+      <div class="meta-item"><div class="meta-dot"></div>Under 2 minutes</div>
+      <div class="meta-item"><div class="meta-dot"></div>Personalised result + action plan</div>
+    </div>
+    <button class="btn-primary" onclick="startQuiz()">
+      Start the diagnostic
+      <span class="arrow">→</span>
+    </button>
+
+    <div class="intro-proof">
+      <div class="proof-item">
+        <div class="proof-num">12+</div>
+        <div class="proof-label">Years mapping African digital markets</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">$2M</div>
+        <div class="proof-label">In donor funding influenced through strategic repositioning</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">2</div>
+        <div class="proof-label">Proprietary frameworks — Digital Class System &amp; Culture Compass</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ QUESTION SCREEN ═══════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-question">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div class="q-counter" id="q-counter">Question 1 of 5</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options-list" id="options-list"></div>
+  </div>
+
+  <!-- ══ EMAIL GATE ════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-email">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width:100%"></div>
+    </div>
+    <div class="q-counter">Almost there</div>
+    <div class="q-text">Where should we send your result?</div>
+    <div class="email-gate">
+      <div class="gate-label">Your personalised result is ready</div>
+      <div class="gate-text">Enter your name and email to see where your brand sits in Africa's creator economy — and get a specific action plan for your trust type.</div>
+      <div class="input-row">
+        <input class="text-input" id="user-name" type="text" placeholder="Your first name" />
+        <input class="text-input" id="user-email" type="email" placeholder="Your email address" />
+        <button class="btn-submit" onclick="showResult()">See my result →</button>
+      </div>
+      <div class="privacy-note">No spam. Your result lands in your inbox. You can unsubscribe any time.</div>
+    </div>
+  </div>
+
+  <!-- ══ RESULTS SCREEN ════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-result"></div>
+
+  <footer class="site-footer">
+    <span>© 2026 Stella Njogo Advisory LLC · Nairobi, Kenya</span>
+    <span>Built on the <a href="https://stellanjogo.com">Digital Class System</a> &amp; Culture Compass frameworks</span>
+  </footer>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// QUIZ DATA
+// ═══════════════════════════════════════════════════════════════════════════
+
+const questions = [
+  {
+    text: "When your organisation thinks about working with creators, what is the primary goal?",
+    options: [
+      { text: "Reach more people — get our message to a larger audience", scores: { invisible: 2, billboard: 2 } },
+      { text: "Build credibility — be seen alongside voices our audience already trusts", scores: { custodian: 2 } },
+      { text: "Grow a community — bring our people together around shared values", scores: { gatherer: 2 } },
+      { text: "Build our own voice — establish our founder or brand as a thought leader", scores: { authority: 2 } },
+    ]
+  },
+  {
+    text: "How does your target audience in Africa primarily make decisions about who to trust?",
+    options: [
+      { text: "Through institutions and structures they already belong to — faith, family, profession", scores: { custodian: 2 } },
+      { text: "Through peer networks and communities of shared identity", scores: { gatherer: 2 } },
+      { text: "Through individual voices they follow and respect personally", scores: { authority: 2 } },
+      { text: "Honestly, we haven't mapped this clearly for our specific market", scores: { invisible: 2 } },
+    ]
+  },
+  {
+    text: "How would you describe your current creator economy activity?",
+    options: [
+      { text: "We pay creators to post about us when we have campaigns", scores: { billboard: 3 } },
+      { text: "We have some creator relationships but no clear strategy connecting them", scores: { invisible: 2, billboard: 1 } },
+      { text: "We are building community with creators — co-creating rather than just sponsoring", scores: { gatherer: 2 } },
+      { text: "Our founder or team are themselves creating content with a growing audience", scores: { authority: 2 } },
+    ]
+  },
+  {
+    text: "What is the biggest challenge your organisation faces in African markets right now?",
+    options: [
+      { text: "We can't get our message to cut through — too much noise", scores: { billboard: 1, invisible: 1 } },
+      { text: "We have reach but it isn't converting to behaviour change or sales", scores: { billboard: 2 } },
+      { text: "We struggle to build deep community connection beyond surface engagement", scores: { gatherer: 1, invisible: 1 } },
+      { text: "We lack the authority or trust to be seen as the go-to voice in our space", scores: { authority: 2, custodian: 1 } },
+    ]
+  },
+  {
+    text: "If you could have one outcome from your creator economy strategy in the next 12 months, it would be:",
+    options: [
+      { text: "Our brand is trusted by the communities that matter most to our mission", scores: { custodian: 2 } },
+      { text: "We have a loyal, engaged community that advocates for us organically", scores: { gatherer: 2 } },
+      { text: "Our founder or organisation is recognised as a leading voice in our sector", scores: { authority: 2 } },
+      { text: "We have a clear, measurable creator strategy we can actually execute", scores: { invisible: 3 } },
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════════════════
+// RESULT PROFILES
+// ═══════════════════════════════════════════════════════════════════════════
+
+const profiles = {
+  invisible: {
+    name: "The Strategy Gap",
+    tagline: "You have ambition. You need architecture.",
+    badge: "institutional",
+    badgeLabel: "Trust Type: Institutional",
+    description: "Your organisation is operating in Africa's creator economy without a clear strategic foundation — which means you're probably spending on reach that isn't converting, and feeling like creator partnerships aren't working for you. The good news: this is the most solvable position. The gap isn't resources or relationships. It's a framework for understanding who your market actually is and which trust type drives their behaviour. Once you have that, every creator decision becomes clearer.",
+    strengths: [
+      "You recognise the problem — most organisations at this stage don't",
+      "You have room to build your strategy from a clean foundation",
+      "You're not yet locked into approaches that don't work",
+    ],
+    gaps: [
+      "No clear mapping between your market's trust type and your creator approach",
+      "Creator partnerships feel transactional because they currently are",
+      "No measurement framework connecting creator activity to real outcomes",
+    ],
+    actions: [
+      "Start with a Digital Class Diagnostic — understand who your market actually is before spending another shilling on creators",
+      "Map which of the three trust types (institutional, community, individual) drives your specific audience",
+      "Build your creator strategy around trust, not reach — one well-aligned creator outperforms ten misaligned ones",
+    ],
+    ctaType: "diagnostic",
+  },
+  billboard: {
+    name: "The Billboard Trap",
+    tagline: "You're buying reach. Your audience is buying nothing.",
+    badge: "institutional",
+    badgeLabel: "Trust Type: Institutional",
+    description: "Your organisation has invested in creator partnerships — but you're measuring the wrong things. Impressions, reach, and follower counts feel like results, but your African audience can tell the difference between a paid post and a genuine endorsement. In markets where trust is the currency and community validation is the conversion mechanism, billboard-style creator strategy actively undermines the credibility it's supposed to build. The pivot isn't dramatic — but it requires understanding which trust type your market actually runs on.",
+    strengths: [
+      "You're already investing in the creator economy — you're ahead of most",
+      "You have existing creator relationships you can deepen rather than replace",
+      "Your budget is there — it just needs to be redirected",
+    ],
+    gaps: [
+      "Creator selection driven by follower count, not trust alignment",
+      "Transactional partnerships that your audience reads as paid promotion",
+      "No framework connecting creator choice to market trust type",
+    ],
+    actions: [
+      "Audit your current creator roster — are they trusted inside your audience's actual community structures?",
+      "Shift from sponsorship to co-creation — give creators a genuine stake in the narrative",
+      "Map your audience's trust type first; let that drive creator selection, not audience size",
+    ],
+    ctaType: "strategy",
+  },
+  custodian: {
+    name: "The Custodian",
+    tagline: "Trust travels through structures. You understand this.",
+    badge: "institutional",
+    badgeLabel: "Trust Type: Institutional",
+    description: "Your organisation operates in a space where decisions are made through established structures — professional associations, faith networks, family systems, institutional credibility. You instinctively understand that the creator who moves your audience isn't the one with the most followers — it's the one with the most legitimacy inside the structures your audience already defers to. This is the oldest and most durable form of trust in African communities. The strategic challenge is finding and activating those voices before your competitors do.",
+    strengths: [
+      "Deep understanding of how institutional trust operates in your market",
+      "Relationships with credible voices inside your audience's community structures",
+      "Your brand has the patience to build trust the right way",
+    ],
+    gaps: [
+      "May be underinvesting in digital creator partnerships — relying too heavily on offline structures",
+      "Risk of missing the Class 3→4 digital transition in your audience",
+      "Institutional trust alone doesn't travel across digital platforms without creator translation",
+    ],
+    actions: [
+      "Identify the digital voices who already carry institutional trust in your sector — they exist, they're just not being activated",
+      "Build a creator partnership framework that validates your brand through the structures your audience belongs to",
+      "Don't abandon institutional trust — translate it into digital creator language",
+    ],
+    ctaType: "strategy",
+  },
+  gatherer: {
+    name: "The Gatherer",
+    tagline: "Community is your competitive advantage. Scale it.",
+    badge: "community",
+    badgeLabel: "Trust Type: Community",
+    description: "You understand that the most powerful thing a brand can do in Africa's creator economy is give people something to belong to. Your instinct is to build community, not just audience — and that instinct is exactly right. In Africa's rapidly growing digital middle class, community trust is the most commercially active force in the market. The creators who work for you aren't broadcasters — they're conveners. Your strategic challenge is to move from informal community building to a structured creator strategy that compounds over time.",
+    strengths: [
+      "You think in communities, not demographics — a rare and valuable lens",
+      "Your audience already has the connective tissue for viral, organic growth",
+      "Co-creation comes naturally to you — you're not trying to broadcast",
+    ],
+    gaps: [
+      "Community strategy may be diffuse — present everywhere, strategic nowhere",
+      "Creator partnerships may lack the measurement framework to show ROI",
+      "Risk of community building without commercial architecture connecting it to outcomes",
+    ],
+    actions: [
+      "Define your community's shared identity precisely — what do they believe, aspire to, and belong to together?",
+      "Build a creator tier: community anchors (trusted inside the tribe) + aspirational voices (pulling the community upward)",
+      "Connect community activity to commercial outcomes with a clear funnel — community without conversion is charity",
+    ],
+    ctaType: "strategy",
+  },
+  authority: {
+    name: "The Authority Builder",
+    tagline: "Your point of view is the product. Own it.",
+    badge: "individual",
+    badgeLabel: "Trust Type: Individual",
+    description: "You are building — or you want to build — genuine thought leadership in your sector. You understand that in Africa's creator economy, the most powerful influence comes from individual voices with a consistent, honest point of view that their audience has chosen to trust. This is the trust type that makes the billboards irrelevant — when people believe in the person, they believe in what the person stands for. Your strategic challenge is to build that authority with enough specificity and consistency that your voice becomes the reference point in your space.",
+    strengths: [
+      "You understand that personal conviction, not polish, builds individual trust",
+      "Your sector knowledge is deep enough to support genuine thought leadership",
+      "You're thinking long-term — authority compounds, reach depreciates",
+    ],
+    gaps: [
+      "May lack the content architecture to convert authority into commercial outcomes",
+      "Risk of building audience without building the offer that monetises their trust",
+      "Authority strategy needs consistency — sporadic thought leadership doesn't compound",
+    ],
+    actions: [
+      "Define your non-negotiable point of view — the one thing you believe about your sector that most organisations won't say out loud",
+      "Build a content architecture: one flagship idea, three content pillars, one channel you own completely",
+      "Connect your authority to a specific commercial offer — authority without an ask is a speaking career, not a business",
+    ],
+    ctaType: "course",
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════════
+
+let currentQ = 0;
+let scores = { invisible: 0, billboard: 0, custodian: 0, gatherer: 0, authority: 0 };
+let selectedOption = null;
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FUNCTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startQuiz() {
+  currentQ = 0;
+  scores = { invisible: 0, billboard: 0, custodian: 0, gatherer: 0, authority: 0 };
+  renderQuestion();
+  showScreen('screen-question');
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  const letters = ['A','B','C','D'];
+  const pct = (currentQ / questions.length) * 100;
+
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+  document.getElementById('q-text').textContent = q.text;
+
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+  selectedOption = null;
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = `
+      <div class="option-letter">${letters[i]}</div>
+      <div class="option-text">${opt.text}</div>
+    `;
+    btn.onclick = () => selectOption(i, btn, opt.scores);
+    list.appendChild(btn);
+  });
+}
+
+function selectOption(idx, btn, optScores) {
+  // Clear previous
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedOption = { idx, scores: optScores };
+
+  // Add scores
+  Object.entries(optScores).forEach(([key, val]) => {
+    scores[key] = (scores[key] || 0) + val;
+  });
+
+  // Auto-advance after short delay
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < questions.length) {
+      renderQuestion();
+    } else {
+      showScreen('screen-email');
+    }
+  }, 420);
+}
+
+function getTopProfile() {
+  return Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+}
+
+function showResult() {
+  const name = document.getElementById('user-name').value.trim() || 'there';
+  const email = document.getElementById('user-email').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address to see your result.');
+    return;
+  }
+
+  const profileKey = getTopProfile();
+  const p = profiles[profileKey];
+
+  // Capture lead to Google Sheet (fire-and-forget; never blocks the result)
+  try {
+    fetch("https://script.google.com/macros/s/AKfycbxuygPCay-WebUzW2Tp4q6C30OTrQfL0bYmFBQ0pxTdM53A8G9Yh_fRna2TcGVKTCIu/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name, email: email, result: p.name })
+    });
+  } catch (e) {
+    // Silent fail — the user still sees their result even if capture hiccups
+  }
+
+  const ctaBlock = buildCTA(p.ctaType, name);
+
+  const badgeClass = `badge-${p.badge === 'institutional' ? 'institutional' : p.badge === 'community' ? 'community' : 'individual'}`;
+
+  const resultHTML = `
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width:100%"></div>
+    </div>
+    <div class="result-header">
+      <div class="result-kicker">Your creator economy position · Stella Njogo Advisory</div>
+      <div class="result-type-name">${p.name}</div>
+      <div class="result-tagline">"${p.tagline}"</div>
+      <span class="trust-type-badge ${badgeClass}">${p.badgeLabel}</span>
+    </div>
+
+    <div class="result-desc">${p.description.replace(/\n/g, '<br>')}</div>
+
+    <div class="result-card">
+      <div class="result-card-header">Where you are strong</div>
+      <div class="result-card-body">
+        <ul class="strength-list">
+          ${p.strengths.map(s => `<li><span class="li-icon" style="color:#361965;">✓</span>${s}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-card-header">Where the gaps are</div>
+      <div class="result-card-body">
+        <ul class="gap-list">
+          ${p.gaps.map(g => `<li><span class="li-icon" style="color:#B8922E;">→</span>${g}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <div class="result-card-header">Three actions to take this month</div>
+      <div class="result-card-body">
+        <ul class="action-list">
+          ${p.actions.map((a,i) => `<li><span class="li-icon" style="color:#361965;font-weight:700;">${i+1}.</span>${a}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+
+    ${ctaBlock}
+
+    <div class="share-strip">
+      <strong>Know someone who needs this?</strong> Share it → <a href="https://stellanjogo.com" target="_blank" rel="noopener" style="color:var(--forest);text-decoration:none;">stellanjogo.com</a>
+    </div>
+    <div style="text-align:center;">
+      <button class="retake-btn" onclick="startQuiz()">← Retake the diagnostic</button>
+    </div>
+  `;
+
+  document.getElementById('screen-result').innerHTML = resultHTML;
+  showScreen('screen-result');
+}
+
+function buildCTA(type, name) {
+  const ctas = {
+    diagnostic: {
+      headline: `${name}, your next step is a conversation.`,
+      body: "You need a clear map of who your market actually is and which trust type drives their decisions — before you spend another cent on creator partnerships. The Digital Class Diagnostic is a 3-week engagement that gives you exactly that, available from $5,000. Let's talk about whether it's the right fit.",
+      primary: { label: "Book a discovery call →", url: "https://calendar.app.google/tPpFB8pFAcdfgX1X8" },
+      secondary: { label: "Or start with the weekly masterclass", url: "https://selar.com/thedigitalleadershipmasterclass" },
+    },
+    strategy: {
+      headline: `${name}, you're ready for a real strategy conversation.`,
+      body: "You have the instincts. You need the architecture. A Creator Economy Strategy Engagement builds your complete creator strategy — trust mapping, creator profiles, channel plan, measurement — in 6–8 weeks, starting at $15,000. The best next step is a direct conversation about your specific situation.",
+      primary: { label: "Book a strategy conversation →", url: "https://calendar.app.google/tPpFB8pFAcdfgX1X8" },
+      secondary: { label: "Or start with the weekly masterclass", url: "https://selar.com/thedigitalleadershipmasterclass" },
+    },
+    course: {
+      headline: `${name}, start with the Digital Leader Masterclass.`,
+      body: "You're building individual authority — and the fastest way to sharpen it is to do the work weekly, with guidance. The Digital Leader Masterclass is a live, 90-minute session every Thursday. You leave with a task to execute that weekend and a result by Monday. $35 per session.",
+      primary: { label: "Reserve your seat →", url: "https://selar.com/thedigitalleadershipmasterclass" },
+      secondary: { label: "Or book a 1:1 conversation", url: "https://calendar.app.google/tPpFB8pFAcdfgX1X8" },
+    },
+  };
+
+  const c = ctas[type];
+  return `
+    <div class="result-cta">
+      <div class="cta-label">Your recommended next step</div>
+      <div class="cta-headline">${c.headline}</div>
+      <div class="cta-body">${c.body}</div>
+      <div class="cta-buttons">
+        <a class="btn-cta-primary" href="${c.primary.url}" target="_blank" rel="noopener">${c.primary.label}</a>
+        <a class="btn-cta-secondary" href="${c.secondary.url}" target="_blank" rel="noopener">${c.secondary.label}</a>
+      </div>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
